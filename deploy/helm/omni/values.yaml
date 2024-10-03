@@ -54,7 +54,7 @@ imageFactory:
   pxeAddress: ""
 volumeMounts:
   tls:
-    mountPath: "/etc/omni/tls"
+    mountPath: null # "/etc/omni/tls"
     readOnly: true
   omniAsc:
     mountPath: "/omni.asc"
@@ -62,6 +62,6 @@ volumeMounts:
     readOnly: true
 volumes:
   tls:
-    secretName: tls
+    secretName: null # tls
   gpg:
     secretName: gpg
