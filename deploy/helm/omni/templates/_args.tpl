@@ -1,6 +1,6 @@
 {{- define "omni.args" -}}
 - --account-id="{{ .Values.accountUuid }}"
-- --advertised-api-url={{ printf "https://%s:%d/" .Values.domainName (.Values.service.api.targetPort | int) }}
+- --advertised-api-url={{ printf "https://%s:%d/" .Values.domainName (.Values.service.api.targetPort | int) }} # TODO: Remove port
 - --advertised-kubernetes-proxy-url={{ printf "https://%s:%d/" .Values.domainName (.Values.service.k8sProxy.targetPort | int) }}
 {{- if .Values.auth.auth0.enabled }}
 - --auth-auth0-enabled=true
@@ -13,7 +13,7 @@
 - --auth-saml-url="{{ .Values.auth.saml.url }}"
 {{- end }}
 {{- end }}
-- --bind-addr="0.0.0.0:{{ .Values.service.api.targetPort }}"
+- --bind-addr={{ .Values.service.bindAddress }}:{{ .Values.service.api.targetPort }}
 {{- if .Values.volumes.tls.secretName }}
 - --cert=/etc/omni/tls/tls.crt
 - --key=/etc/omni/tls/tls.key
@@ -34,8 +34,8 @@
 {{- if and .Values.initialUsers (gt (len .Values.initialUsers) 0) }}
 - --initial-users={{ join "," .Values.initialUsers }}
 {{- end }}
-- --k8s-proxy-bind-addr=0.0.0.0:{{ .Values.service.k8sProxy.port }}
-- --machine-api-bind-addr={{ .Values.service.siderolink.api.bindAddress }}:{{ .Values.service.siderolink.api.port }}
+- --k8s-proxy-bind-addr={{ .Values.service.bindAddress }}:{{ .Values.service.k8sProxy.port }}
+- --machine-api-bind-addr={{ .Values.service.bindAddress }}:{{ .Values.service.siderolink.api.port }}
 {{- if .Values.name }}
 - --name={{ .Values.name}}
 {{- end }}

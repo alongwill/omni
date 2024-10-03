@@ -22,12 +22,12 @@ initialUsers: []
 name: "My Omni instance"
 service:
   type: ClusterIP # currently only ClusterIP is supported by this Helm Chart
+  bindAddress: 127.0.0.1
   api:
     port: 443
     targetPort: 443
   siderolink:
     api:
-      bindAddress: 0.0.0.0
       port: 8090
       targetPort: 8090
     wireguard:
