@@ -1,11 +1,11 @@
 {{- define "omni.args" -}}
 - --account-id="{{ .Values.accountUuid }}"
-- --advertised-api-url={{ printf "https://%s:%d/" .Values.domainName (.Values.service.api.targetPort | int) }} # TODO: Remove port
+- --advertised-api-url={{ printf "https://%s/" .Values.domainName }} 
 - --advertised-kubernetes-proxy-url={{ printf "https://%s:%d/" .Values.domainName (.Values.service.k8sProxy.targetPort | int) }}
 {{- if .Values.auth.auth0.enabled }}
 - --auth-auth0-enabled=true
-- --auth-auth0-client-id="{{ .Values.auth.auth0.clientId | toString}}"
-- --auth-auth0-domain="{{ .Values.auth.auth0.domain }}"
+- --auth-auth0-client-id={{ .Values.auth.auth0.clientId | toString}}
+- --auth-auth0-domain={{ .Values.auth.auth0.domain }}
 {{- end }}
 {{- if .Values.auth.saml.enabled }}
 - --auth-saml-enabled=true
