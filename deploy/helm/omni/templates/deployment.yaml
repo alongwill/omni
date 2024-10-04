@@ -40,7 +40,7 @@ spec:
           {{- toYaml . | nindent 12 }}
           {{- end }}
         ports:
-          - name: api
+          - name: omni
             containerPort: {{ .Values.service.api.port }}
             protocol: TCP
           - name: siderolink
@@ -49,9 +49,6 @@ spec:
           - name: wireguard
             containerPort: {{ .Values.service.siderolink.wireguard.port }}
             protocol: UDP
-          - name: event-sink
-            containerPort: {{ .Values.service.eventSink.port }}
-            protocol: TCP
           - name: k8s-proxy
             containerPort: {{ .Values.service.k8sProxy.port }}
             protocol: TCP

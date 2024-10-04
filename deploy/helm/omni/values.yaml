@@ -33,9 +33,6 @@ service:
     wireguard:
       address: #<ip address of the host running Omni>
       port: 50180
-  eventSink:
-    port: 8091
-    targetPort: 8091
   k8sProxy:
     port: 8100
     targetPort: 8100

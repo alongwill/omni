@@ -13,7 +13,7 @@
 - --auth-saml-url="{{ .Values.auth.saml.url }}"
 {{- end }}
 {{- end }}
-- --bind-addr={{ .Values.service.bindAddress }}:{{ .Values.service.api.targetPort }}
+#- --bind-addr={{ .Values.service.bindAddress }}:{{ .Values.service.api.targetPort }}
 {{- if .Values.volumes.tls.secretName }}
 - --cert=/etc/omni/tls/tls.crt
 - --key=/etc/omni/tls/tls.key
@@ -24,7 +24,6 @@
 {{- if .Values.etcd.embedded }}
 - --etcd-embedded=true
 {{- end }}
-- --event-sink-port={{ .Values.service.eventSink.port }}
 {{- if .Values.imageFactory.pxeAddress }}
 - --image-factory-address="{{ .Values.imageFactory.address }}"
 {{- end }}
@@ -34,8 +33,8 @@
 {{- if and .Values.initialUsers (gt (len .Values.initialUsers) 0) }}
 - --initial-users={{ join "," .Values.initialUsers }}
 {{- end }}
-- --k8s-proxy-bind-addr={{ .Values.service.bindAddress }}:{{ .Values.service.k8sProxy.port }}
-- --machine-api-bind-addr={{ .Values.service.bindAddress }}:{{ .Values.service.siderolink.api.port }}
+#- --k8s-proxy-bind-addr={{ .Values.service.bindAddress }}:{{ .Values.service.k8sProxy.port }}
+#- --machine-api-bind-addr={{ .Values.service.bindAddress }}:{{ .Values.service.siderolink.api.port }}
 {{- if .Values.name }}
 - --name={{ .Values.name}}
 {{- end }}
