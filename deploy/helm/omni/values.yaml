@@ -30,6 +30,7 @@ service:
     api:
       port: 8090
       targetPort: 8090
+    domainName: omni.siderolink.example.com
     wireguard:
       address: #<ip address of the host running Omni>
       port: 50180

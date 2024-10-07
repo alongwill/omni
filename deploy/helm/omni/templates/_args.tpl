@@ -41,6 +41,6 @@
 {{- if .Values.privateKeySource }}
 - --private-key-source={{ .Values.privateKeySource }}
 {{- end }}
-- --siderolink-api-advertised-url={{ printf "grpc://%s:%d/" .Values.domainName (.Values.service.siderolink.api.targetPort | int) }}
+- --siderolink-api-advertised-url={{ printf "https://%s" .Values.service.siderolink.domainName }}
 - --siderolink-wireguard-advertised-addr="{{ .Values.service.siderolink.wireguard.address }}:{{ .Values.service.siderolink.wireguard.targetPort }}"
 {{- end }}
