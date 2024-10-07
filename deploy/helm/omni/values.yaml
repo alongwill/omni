@@ -33,10 +33,11 @@ service:
     domainName: omni.siderolink.example.com
     wireguard:
       address: #<ip address of the host running Omni>
-      port: 50180
+      port: 30180
   k8sProxy:
-    port: 8100
-    targetPort: 8100
+    domainName: omni.kubernetes.example.com
+    port: 8095
+    targetPort: 8095
 resources:
   requests:
     cpu: 100m

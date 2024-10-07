@@ -1,7 +1,7 @@
 {{- define "omni.args" -}}
 - --account-id="{{ .Values.accountUuid }}"
 - --advertised-api-url={{ printf "https://%s/" .Values.domainName }} 
-- --advertised-kubernetes-proxy-url={{ printf "https://%s:%d/" .Values.domainName (.Values.service.k8sProxy.targetPort | int) }}
+- --advertised-kubernetes-proxy-url={{ printf "https://%s/" .Values.service.k8sProxy.domainName }}
 {{- if .Values.auth.auth0.enabled }}
 - --auth-auth0-enabled=true
 - --auth-auth0-client-id={{ .Values.auth.auth0.clientId | toString}}

@@ -47,7 +47,7 @@ spec:
             containerPort: {{ .Values.service.siderolink.api.port }}
             protocol: TCP
           - name: wireguard
-            containerPort: {{ .Values.service.siderolink.wireguard.port }}
+            containerPort: 50180
             protocol: UDP
           - name: k8s-proxy
             containerPort: {{ .Values.service.k8sProxy.port }}
