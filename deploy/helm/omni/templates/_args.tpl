@@ -42,5 +42,5 @@
 - --private-key-source={{ .Values.privateKeySource }}
 {{- end }}
 - --siderolink-api-advertised-url={{ printf "https://%s" .Values.service.siderolink.domainName }}
-- --siderolink-wireguard-advertised-addr="{{ .Values.service.siderolink.wireguard.address }}:{{ .Values.service.siderolink.wireguard.targetPort }}"
+- --siderolink-wireguard-advertised-addr={{ .Values.service.siderolink.wireguard.address }}:{{ .Values.service.siderolink.wireguard.port }}
 {{- end }}

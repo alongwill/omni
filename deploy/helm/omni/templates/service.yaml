@@ -80,7 +80,8 @@ spec:
   clusterIP: {{ .Values.service.clusterIP }}
   ports:
     - name: wireguard
-      port: {{ .Values.service.siderolink.api.port }}
+      nodePort: {{ .Values.service.siderolink.wireguard.port }}
+      port: {{ .Values.service.siderolink.wireguard.port }}
       targetPort: wireguard
       protocol: UDP
   selector:
