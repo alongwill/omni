@@ -18,15 +18,15 @@ spec:
   clusterIP: {{ .Values.service.clusterIP }}
   ports:
     - name: omni
-      port: {{ .Values.service.api.port }}
+      port: 8080
       targetPort: omni
       protocol: TCP
     - name: k8s-proxy
-      port: {{ .Values.service.k8sProxy.port }}
+      port: 8095
       targetPort: k8s-proxy
       protocol: TCP
     - name: siderolink
-      port: {{ .Values.service.siderolink.api.port }}
+      port: 8090
       targetPort: siderolink
       protocol: TCP
   selector:
@@ -51,11 +51,11 @@ spec:
   clusterIP: {{ .Values.service.clusterIP }}
   ports:
     - name: omni
-      port: {{ .Values.service.api.port }}
+      port: 8080
       targetPort: omni
       protocol: TCP
     - name: siderolink
-      port: {{ .Values.service.siderolink.api.port }}
+      port: 8090
       targetPort: siderolink
       protocol: TCP
   selector:

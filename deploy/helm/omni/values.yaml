@@ -22,22 +22,13 @@ initialUsers: []
 name: "My Omni instance"
 service:
   type: ClusterIP # currently only ClusterIP is supported by this Helm Chart
-  bindAddress: 0.0.0.0
-  api:
-    port: 8080
-    targetPort: 8080
   siderolink:
-    api:
-      port: 8090
-      targetPort: 8090
     domainName: omni.siderolink.example.com
     wireguard:
       address: #<ip address of the host running Omni>
       port: 30180
   k8sProxy:
     domainName: omni.kubernetes.example.com
-    port: 8095
-    targetPort: 8095
 resources:
   requests:
     cpu: 100m
