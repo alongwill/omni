@@ -41,19 +41,21 @@ spec:
           {{- end }}
         ports:
           - name: omni
-            containerPort: {{ .Values.service.api.port }}
+            containerPort: 8080
             protocol: TCP
           - name: siderolink
-            containerPort: {{ .Values.service.siderolink.api.port }}
+            containerPort: 8090
+            protocol: TCP
+          - name: k8s-proxy
+            containerPort: 8095
             protocol: TCP
           - name: wireguard
             containerPort: 50180
             protocol: UDP
-          - name: k8s-proxy
-            containerPort: {{ .Values.service.k8sProxy.port }}
-            protocol: TCP
         resources:
           limits:
+            # Required for /dev/net/tun
+            # https://www.talos.dev/v1.8/kubernetes-guides/configuration/device-plugins/
             squat.ai/tun: 1
         securityContext:
           allowPrivilegeEscalation: false
